@@ -102,7 +102,7 @@ def get_links():
     ls = get_links_sub(seed)
     if ls :
         links.extend(ls)
-    for i in range (2, 3) :
+    for i in range (2, 31) :
         ls = get_links_sub(seed + "?page=" + str(i))
         if not ls :
             break
