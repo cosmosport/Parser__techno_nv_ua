@@ -13,3 +13,6 @@
 "date": "",  # дата публикации новости в формате YYYY-MM-DD
 
 "time": "",  # время публикации новости в формате HH:MM
+
+Установка:
+python3 -m pip install -r requirements.txt
