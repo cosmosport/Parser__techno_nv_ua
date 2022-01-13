@@ -40,7 +40,7 @@ def get_page_content(link):
 
 
     page = requests.get(link)
-    soup = BeautifulSoup(page.content, "html.parser")
+    soup = BeautifulSoup(page.content.decode("utf-8"), "html.parser")
     body_list = None
     wrapper = soup.find("div", class_="content_wrapper")
     # Выбор функции для парсинга в зависимости от типа html страницы
@@ -102,7 +102,7 @@ def get_links():
     ls = get_links_sub(seed)
     if ls :
         links.extend(ls)
-    for i in range (2, 31) :
+    for i in range (2, 3) :
         ls = get_links_sub(seed + "?page=" + str(i))
         if not ls :
             break
@@ -123,9 +123,9 @@ def main():
 
     with open("www-techno.nv.ua.json", "wt", encoding="utf-8-sig") as f:
         try:
-            json.dump(top_news, f)
-        except:
-            pass
+            json.dump(top_news, f, indent=4, ensure_ascii=False)
+        except Exception:
+            print("json.dump error -- cosmosport")
     print("Работа завершена")
 
 
