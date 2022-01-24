@@ -5,7 +5,7 @@ import re
 
 
 HEADERS = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gecko/20100101 Firefox/71.0', 'accept': '*/*'}
-seed = "https://techno.nv.ua/innovations.html/"
+SEED = "https://techno.nv.ua/innovations.html/"
 
 
 def get_page_content(link):
@@ -99,11 +99,11 @@ def get_links_sub(url):
 def get_links():
     '''Ищет ссылки на новости на всех страницах рубрики и возвращает их список'''
     links = []
-    ls = get_links_sub(seed)
+    ls = get_links_sub(SEED)
     if ls :
         links.extend(ls)
-    for i in range (2, 3) :
-        ls = get_links_sub(seed + "?page=" + str(i))
+    for i in range (2, 31) :
+        ls = get_links_sub(SEED + "?page=" + str(i))
         if not ls :
             break
         links.extend(ls)
